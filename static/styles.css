@@ -1,0 +1,29 @@
+*{
+  box-sizing: border-box;
+  padding: 5px;
+  background: #a0a0a0;
+}
+body{
+  background-color: rgb(202, 194, 202);
+  color: #000;
+}
+.check{
+  text-decoration: none;
+  color: #7ff77f;
+}
+.post-entry > h2 >a:hover{
+  color: yellowgreen;
+}
+.title{
+  color: #000;
+  font-size: larger;
+}
+.title:hover{
+  color: yellowgreen;
+}
+
+/* .user-area{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+} */

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+
+<h2>Profile Page</h2>
+<!-- <div class="new_post_btn">
+  <a href="{% url 'new_post' %}"> + Add post</a>
+</div> -->
+<div class="user-area">
+  {% if user.is_authenticated %}
+  <p>Hi {{ user.username }}</p>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+  <!-- show post when you are logged in -->
+  {% if object_list %} {% for post in object_list %}
+  <div class="post-entry">
+    <h2>
+      <a class="check" href="{% url 'post_details' post.pk %}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p>{{ post.body }}</p>
+    <!-- this will show only one post -->
+  </div>
+  {% endfor %} {% else %}
+  <div>
+    <p>You have no post</p>
+  </div>
+  {% endif %}
+  <!-- end of posts -->
+  {% else %}
+  <p>You are not logged in</p>
+  <button><a href="{% url 'login' %}"> Login </a></button>
+  
+</div>
+{% endif %}
+
+{% endblock content %}
+
+{% comment %} object list comes from ListView in views.py {% endcomment %}
